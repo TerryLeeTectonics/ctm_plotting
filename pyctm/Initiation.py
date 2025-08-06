@@ -1,26 +1,10 @@
 ### Import Packages
 import xarray as xr
 
-## Initalize which dataset to choose from
-# - inputs: Model name in string: 'Lee_2025' or 'Shinevar_2018'
-# - outputs: file name of the inputs mode
-def select_model(modelname):
-
-    if modelname == 'Lee_2025':
-        f_ctm = "./ThermalModel_WUS_v2.nc" 
-
-    elif modelname == 'Shinevar_2018':
-        f_ctm = "./Shinevar_2018_Temperature.nc" 
-
-    return f_ctm
-
 ## initalize Xarray Dataset from netCDF file
-#  - inputs: path to thermal model CDF
+#  - inputs: model name (Lee_2025 or Shinevar_2018) and model path
 #  - returns: Xarray Dataset corresponding to the model
-def init_ctm(modelname):
-    
-    # Get correct file name for inputs model name
-    modelpath = select_model(modelname)
+def init_ctm(modelname, modelpath):
     
     # open dataset
     xdata = xr.open_dataset(modelpath)
